@@ -11,5 +11,7 @@ public class Main {
         // Press Shift+F10 or click the green arrow button in the gutter to run the code.
         System.out.println("2");
         System.out.println("3");
+        System.out.println("4");
+        System.out.println("5");
     }
 }
