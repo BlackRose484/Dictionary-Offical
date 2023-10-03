@@ -7,5 +7,4 @@ import java.util.List;
 public class Dictionary {
     protected List<Word> wordArr = new ArrayList<>();
 
-
 }
