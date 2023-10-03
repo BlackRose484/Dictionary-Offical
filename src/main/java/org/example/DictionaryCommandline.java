@@ -10,8 +10,9 @@ public class DictionaryCommandline {
         }
     }
 
-    public static void dictionaryBasic(Dictionary dictionary) {
-        DictionaryManagement.insertFromCommandline(dictionary);
+    public static void dictionaryBasic(Dictionary dictionary) throws Exception {
+        //DictionaryManagement.insertFromCommandline(dictionary);
+        DictionaryManagement.insertFromFile(dictionary);
         DictionaryCommandline.showAllWords(dictionary);
     }
 }
