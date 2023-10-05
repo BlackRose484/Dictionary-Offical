@@ -30,4 +30,13 @@ public class DictionaryManagement {
 
 
     }
+
+    public static void insertFromFile(Dictionary dictionary) throws Exception {
+        File file = new File("src/main/java/org/example/dictionaries.txt");
+        Scanner sc = new Scanner(file);
+        while (sc.hasNext()) {
+            Word word = new Word(sc.next(), sc.nextLine().trim());
+            dictionary.wordArr.add(word);
+        }
+    }
 }

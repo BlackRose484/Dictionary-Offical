@@ -26,8 +26,9 @@ public class DictionaryCommandline {
 //        }
     }
 
-    public static void dictionaryBasic(Dictionary dictionary) throws IOException {
-        DictionaryManagement.insertFromCommandline(dictionary);
+    public static void dictionaryBasic(Dictionary dictionary) throws Exception {
+        //DictionaryManagement.insertFromCommandline(dictionary);
+        DictionaryManagement.insertFromFile(dictionary);
         DictionaryCommandline.showAllWords(dictionary);
     }
 }
