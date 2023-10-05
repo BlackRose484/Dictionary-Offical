@@ -13,25 +13,15 @@ public class DictionaryManagement {
         Scanner sc = new Scanner(System.in);
         System.out.print("Insert the number of words: ");
         int numWords = sc.nextInt();
-        try{
-            Formatter db = new Formatter("src/Database/db.txt");
-            while (numWords-- > 0) {
-                String wordTarget = sc.next();
-                String wordExplain = sc.nextLine();
-                db.format("%s   %s\n",wordTarget,wordExplain);
-                Word word = new Word(wordTarget, wordExplain);
-                dictionary.wordArr.add(word);
-            }
-            db.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        while (numWords-- > 0) {
+            String wordTarget = sc.next();
+            String wordExplain = sc.nextLine();
+            Word word = new Word(wordTarget, wordExplain);
+            dictionary.wordArr.add(word);
         }
-
-
-
     }
 
-    public static void insertFromFile(Dictionary dictionary) throws Exception {
+    public static void insertFromFile(Dictionary dictionary) throws FileNotFoundException {
         File file = new File("src/main/java/org/example/dictionaries.txt");
         Scanner sc = new Scanner(file);
         while (sc.hasNext()) {
