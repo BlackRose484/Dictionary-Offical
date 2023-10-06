@@ -2,10 +2,10 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Formatter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -18,8 +18,43 @@ public class DictionaryManagement {
             String wordExplain = sc.nextLine();
             Word word = new Word(wordTarget, wordExplain);
             dictionary.wordArr.add(word);
+
+            try {
+                Connection connect = DBConnect.getConnection(DBConnect.DB_URL,
+                                     DBConnect.USER_NAME,
+                                     DBConnect.PASSWORD);
+
+                String WordInsert = "INSERT INTO wordTest(idx,wordTarget,wordMeaning) VALUES (?, ?, ?)";
+
+                PreparedStatement stmt = connect.prepareStatement(WordInsert);
+                connect.setAutoCommit(false);
+                stmt.setInt(1,1);
+                stmt.setString(2,wordTarget);
+                stmt.setString(3,wordExplain);
+                int a = stmt.executeUpdate();
+                connect.commit();
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void insertFromFile(Dictionary dictionary) throws FileNotFoundException {
         File file = new File("src/main/java/org/example/dictionaries.txt");
