@@ -27,6 +27,7 @@ public class DictionaryManagement {
         while (sc.hasNext()) {
             Word word = new Word(sc.next(), sc.nextLine().trim());
             dictionary.wordArr.add(word);
+
         }
     }
 }
