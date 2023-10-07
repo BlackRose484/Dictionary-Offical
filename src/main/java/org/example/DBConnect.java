@@ -10,6 +10,8 @@ public class DBConnect {
     public static final String USER_NAME = "root";
     public static final String PASSWORD = "Hung@484";
 
+    public static final String DB_NAME = "wordTest";
+
     /**
      * main
      *
@@ -23,7 +25,7 @@ public class DBConnect {
             // crate statement
             Statement stmt = conn.createStatement();
             // get data from table 'student'
-            ResultSet rs = stmt.executeQuery("select * from wordTest");
+            ResultSet rs = stmt.executeQuery("select * from " + DB_NAME);
             // show data
             while (rs.next()) {
                 System.out.println(rs.getInt(1) + "  " + rs.getString(2)
@@ -58,5 +60,9 @@ public class DBConnect {
             ex.printStackTrace();
         }
         return conn;
+    }
+
+    public static Connection connectDB() {
+        return getConnection(DB_URL, USER_NAME, PASSWORD);
     }
 }
