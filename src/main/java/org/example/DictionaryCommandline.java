@@ -64,10 +64,10 @@ public class DictionaryCommandline {
                 DictionaryManagement.insertFromCommandline(dictionary,connect);
                 break;
             case 2:
-                DictionaryManagement.removeFromCommandLine(dictionary,connect);
+                DictionaryManagement.removeFromCommandLine(dictionary, connect);
                 break;
             case 3:
-                DictionaryManagement.insertFromCommandline(dictionary,connect);
+                DictionaryManagement.FixFromCommandLine(dictionary,connect);
                 break;
             case 4:
                 break;
@@ -105,7 +105,7 @@ public class DictionaryCommandline {
         }
     }
 
-    public static void getWord (String word, Connection connect) {
+    public static String getWord (String word, Connection connect) {
         try {
             Statement smt = connect.createStatement();
             ResultSet res = smt.executeQuery("Select * from " + DBConnect.DB_NAME
@@ -123,6 +123,7 @@ public class DictionaryCommandline {
                         System.out.printf("%-3s   %-15s | %-20s \n", "", "", mean[i]);
                     }
                 }
+                return word + "/" + meaning;
             } else {
                 suggestWord(word, connect);
             }
@@ -130,6 +131,7 @@ public class DictionaryCommandline {
             System.out.println("Loi truy xuat Db");
             System.out.println(e);
         }
+        return "";
     }
 
     public static void searchWord(Connection connect) {
