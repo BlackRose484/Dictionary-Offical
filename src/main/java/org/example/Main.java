@@ -10,6 +10,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Connection Connect = DBConnect.connectDB();
         Dictionary dictionary = new Dictionary();
-        DictionaryCommandline.dictionaryBasic(dictionary,Connect);
+        while(true) {
+            DictionaryCommandline.dictionaryBasic(dictionary, Connect);
+        }
     }
 }
